@@ -12,6 +12,10 @@ import { RegistroComponent } from './login/registro.component';
 // Modulos
 import { PagesModule } from './pages/pages.module';
 
+// Temporal
+import { FormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +25,8 @@ import { PagesModule } from './pages/pages.module';
   imports: [
     BrowserModule,
     APP_ROUTES,
-    PagesModule
+    PagesModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
