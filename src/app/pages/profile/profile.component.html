@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title text-center">Datos del usuario</h4>
-                <h6 class="card-subtitle text-center">Nombre del usuario</h6>
+                <h6 class="card-subtitle text-center">{{ usuario.nombre }}</h6>
 
                 <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form-horizontal p-t-20">
                     <div class="form-group row">

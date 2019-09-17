@@ -107,7 +107,9 @@ export class UsuarioService {
     return this.http.put( url, usuario )
         .pipe(map( (resp: any) => {
 
-          this.guardarStorage(resp.usuario._id, this.token, this.usuario);
+          if ( usuario._id === this.usuario._id ) {
+            this.guardarStorage(resp.usuario._id, this.token, this.usuario);
+          }
 
           swal('Usuario actualizado', usuario.nombre, 'success');
 
@@ -131,5 +133,31 @@ export class UsuarioService {
         swal( 'Error al cambiar imagen', this.usuario.nombre , 'warning');
       });
 
+  }
+
+  cargarUsuarios( desde: number ) {
+
+    let url = URL_SERVICIOS + '/usuario?desde=' + desde;
+
+    return this.http.get(url);
+  }
+
+  buscarUsuarios( termino: string ) {
+
+    let url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
+    return this.http.get(url)
+    .pipe(map( (resp: any) => resp.usuarios ));
+  }
+
+  borrarUsuario( id: string ) {
+
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    url += '?token=' + this.token;
+
+    return this.http.delete(url)
+      .pipe(map( resp => {
+        swal('Usuario borrado', 'El usuario ha sido eliminado correctamente', 'success');
+        return true;
+      }));
   }
 }
