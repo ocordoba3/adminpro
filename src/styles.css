@@ -10,11 +10,18 @@
     width: 150px;
 }
 
-.w70 {
-    width: 70px;
+.w50 {
+    height: 50px;
+    width: 50px;
+}
+
+.img-hospital {
+    height: 200px;
+    width: 430px;
 }
 
 .img-40 {
+    height: 40px;
     width: 40px;
 }
 

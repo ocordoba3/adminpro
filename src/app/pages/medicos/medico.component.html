@@ -1,0 +1,61 @@
+<div class="row animated fadeIn">
+
+    <div class="col-md-5">
+        <div class="card card-body">
+            <h3 *ngIf="medico.nombre" class="box-title m-b-0 text-center">Perfil de {{medico.nombre}}</h3>
+            <h3 *ngIf="!medico.nombre" class="box-title m-b-0 text-center">Crear médico</h3>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarMedico( f )">
+                        <div class="form-group">
+                            <label>Nombre del médico</label>
+                            <input [(ngModel)]="medico.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del médico" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Hospital</label>
+                            <select (change)="cambioHospital( $event.target.value )" [(ngModel)]="medico.hospital" name="hospital" class="form-control" required>
+                                <option value="" >Seleccione hospital...</option>
+                                <option *ngFor="let hospital of hospitales" [value]="hospital._id">
+                                    {{ hospital.nombre }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="text-right">
+                            <a routerLink="/medicos" class="btn btn-danger m-r-5">
+                                <i class="fa fa-undo"></i> Regresar
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0 text-center">Hospital</h3>
+            <h5 class="box-title m-b-0 text-center">( {{hospitalSelect.nombre}} )</h5>
+            <hr>
+            <img [src]=" hospitalSelect.img | imagen:'hospital'" class="img-hospital img-fluid">
+        </div>
+    </div>
+
+    <div class="col-md-3" *ngIf="medico._id">
+        <div class="card card-body text-center">
+            <h3 class="box-title m-b-0 text-center">Foto de perfil</h3>
+            <img (click)="cambiarFoto()" [src]="medico.img | imagen: 'medico'" class="w150 img-fluid img-circle pointer">
+        </div>
+    </div>
+
+</div>

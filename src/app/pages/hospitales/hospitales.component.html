@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
 
-                <input #input (keyup.enter)="buscarUsuario( input.value )" type="text" class="form-control" placeholder="Buscar usuario">
+                <input #input (keyup.enter)="buscarHospital( input.value )" type="text" class="form-control" placeholder="Buscar hospital">
 
             </div>
         </div>
@@ -32,41 +32,34 @@
         <div class="card">
             <div class="card-body">
 
-                <h3 class="card-title">Usuarios registrados(<small>{{totalRegistros}}</small>) </h3>
+                <div class="text-right">
+                    <button type="button" (click)="crearHospital()" class="btn btn-success btn-rounded">
+                    <i class="fa fa-plus"></i> Crear hospital
+                </button>
+                </div>
+                <h3 class="card-title">Hospitales registrados(<small>{{_hospitalService.totalHospitales}}</small>) </h3>
 
                 <table class="table table-hover">
-                    <thead class="text-center">
+                    <thead>
                         <tr class="table-primary">
                             <th class="text-center" scope="col">Imagen</th>
                             <th class="text-center" scope="col">Nombre</th>
-                            <th class="text-center" scope="col">Correo</th>
-                            <th class="text-center" scope="col">Role</th>
-                            <th class="text-center" scope="col">Auth</th>
                             <th class="text-center" scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr *ngFor="let usuario of usuarios">
-                            <td class="w50">
-                                <img [src]=" usuario.img | imagen " (click)="mostrarModal( usuario._id )" class="img-40 img-circle pointer">
-                            </td>
-                            <td>{{ usuario.nombre }}</td>
-                            <td>{{ usuario.email }}</td>
-                            <td>
-                                <select [(ngModel)]="usuario.role" name="role" class="form-control">
-                                    <option value="ADMIN_ROLE">Admin</option>
-                                    <option value="USER_ROLE">Usuario</option>
-                                </select>
+                        <tr *ngFor="let hospital of hospitales">
+                            <td class="w70">
+                                <img [src]=" hospital.img | imagen:'hospital' " (click)="mostrarModal( hospital._id )" class="img-40 pointer">
                             </td>
                             <td>
-                                <label *ngIf="usuario.google" class="label label-danger">Google</label>
-                                <label *ngIf="!usuario.google" class="label label-info">Normal</label>
+                                <input [(ngModel)]="hospital.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del hospital" required>
                             </td>
                             <td>
-                                <button (click)="guardar( usuario )" class="btn btn-success">
+                                <button (click)="guardar( hospital )" class="btn btn-success">
                                     <i class="fa fa-save"></i>
                                 </button>
-                                <button (click)="borrarUsuario( usuario )" class="btn btn-danger">
+                                <button (click)="borrarHospital( hospital )" class="btn btn-danger">
                                     <i class="fa fa-trash-o"></i>
                                 </button>
                             </td>
@@ -76,10 +69,10 @@
                 <br>
 
                 <div class="text-center">
-                    <button (click)="cambiarDesde(-5)" class="btn btn-light">
+                    <button (click)="cambiar(-5)" class="btn btn-light">
                                 <i class="fa fa-backward"></i> Anterior
                         </button>
-                    <button (click)="cambiarDesde(5)" class="btn btn-light">
+                    <button (click)="cambiar(5)" class="btn btn-light">
                                 Siguiente <i class="fa fa-forward"></i>
                         </button>
                 </div>
