@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/service.index';
 import { Usuario } from 'src/app/models/usuario.model';
 
+import swal from 'sweetalert';
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',

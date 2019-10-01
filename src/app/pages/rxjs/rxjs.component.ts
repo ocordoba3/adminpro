@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscriber, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Subscriber } from 'rxjs';
+import { Subscription } from 'rxjs';
+
 import { retry, map, filter } from 'rxjs/operators';
 
 @Component({
@@ -14,12 +17,12 @@ export class RxjsComponent implements OnInit, OnDestroy {
   constructor() {
 
     this.subscription = this.regresaObservable()
-    //.pipe(
+    // .pipe(
     //  retry(2)
     // )
     .subscribe(
       numero => console.log( 'Subs', numero ),
-      error => console.error( 'Error en el subs', error ),
+      error => console.error( 'Error en el obs', error ),
       () => console.log('El obs terminó!')
     );
    }
@@ -63,7 +66,7 @@ export class RxjsComponent implements OnInit, OnDestroy {
     }).pipe(
       map( resp => resp.valor ),
       filter( (valor, index) => {
-        
+
         if ( (valor % 2 ) === 1 ) {
           // impar
           return true;

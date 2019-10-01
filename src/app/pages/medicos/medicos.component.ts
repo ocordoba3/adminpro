@@ -24,7 +24,7 @@ export class MedicosComponent implements OnInit {
     this.cargarMedicos();
   }
 
-  buscarMedico ( termino: string ) {
+  buscarMedico( termino: string ) {
 
     if ( termino.length <= 0 ) {
       this.cargarMedicos();
@@ -69,7 +69,7 @@ export class MedicosComponent implements OnInit {
       dangerMode: true
     })
     .then( borrar => {
-      console.log( borrar );
+      // console.log( borrar );
 
       if (borrar) {
 

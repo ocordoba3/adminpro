@@ -8,9 +8,10 @@ import { APP_ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './login/registro.component';
+import { PagesComponent } from './pages/pages.component';
 
 // Modulos
-import { PagesModule } from './pages/pages.module';
+import { SharedModule } from './shared/shared.module';
 
 // Temporal
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,15 +24,16 @@ import { ServiceModule } from './services/service.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    PagesComponent
     ],
   imports: [
     BrowserModule,
     APP_ROUTES,
-    PagesModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceModule
+    ServiceModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

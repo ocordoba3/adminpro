@@ -9,7 +9,7 @@ import { ModalUploadService } from './modal-upload.service';
 })
 export class ModalUploadComponent implements OnInit {
 
-  
+
   imagenSubir: File;
   imagenTemp: any;
 

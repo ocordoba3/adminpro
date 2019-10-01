@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators';
 import { Hospital } from '../../models/hospital.model';
 import { UsuarioService } from '../usuario/usuario.service';
 
-
+import swal from 'sweetalert';
 
 
 @Injectable({
